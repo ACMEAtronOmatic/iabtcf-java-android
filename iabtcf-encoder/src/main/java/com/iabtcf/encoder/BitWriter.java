@@ -20,11 +20,12 @@ package com.iabtcf.encoder;
  * #L%
  */
 
+import android.util.Base64;
+
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import java.util.Base64;
 import java.util.BitSet;
 import java.util.PrimitiveIterator.OfLong;
 
@@ -32,6 +33,9 @@ import com.iabtcf.encoder.exceptions.ValueOverflowException;
 import com.iabtcf.utils.FieldDefs;
 import com.iabtcf.utils.IntIterable;
 import com.iabtcf.utils.IntIterator;
+
+import static android.util.Base64.NO_PADDING;
+import static android.util.Base64.URL_SAFE;
 
 /**
  * Provides the ability to construct a byte array that is iabtcf compliant. The BitWriter provides
@@ -252,6 +256,6 @@ class BitWriter {
      * Returns a base64 url encoded representation of the bit array.
      */
     public String toBase64() {
-        return Base64.getUrlEncoder().withoutPadding().encodeToString(this.toByteArray());
+        return Base64.encodeToString(this.toByteArray(), URL_SAFE | NO_PADDING);
     }
 }
