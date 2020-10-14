@@ -1,3 +1,6 @@
+# Fork
+This is forked and modified to allow for building on Android devices with API versions greater than 21.
+
 # iabtcf-java
 
 Encode/decode consent information with the IAB EU's GDPR Transparency and Consent Framework
